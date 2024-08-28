@@ -19,7 +19,6 @@ require (
 require (
 	github.com/cloudwego/kitex v0.10.3 // indirect
 	github.com/cloudwego/thriftgo v0.3.15 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 )
 
