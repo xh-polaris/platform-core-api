@@ -4,7 +4,7 @@ package main
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-core-api/biz/adaptor"
+	"platform-core-api/biz/adaptor"
 	"platform-core-api/biz/adaptor/router/core_api"
 	"platform-core-api/provider"
 

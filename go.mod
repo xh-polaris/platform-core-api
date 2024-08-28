@@ -5,7 +5,6 @@ go 1.21
 require (
 	github.com/bytedance/gopkg v0.0.0-20240514070511-01b2cbcf35e1
 	github.com/cloudwego/hertz v0.9.0
-	github.com/cloudwego/kitex v0.10.3
 	github.com/google/wire v0.6.0
 	github.com/hertz-contrib/monitor-prometheus v0.1.2
 	github.com/hertz-contrib/obs-opentelemetry/tracing v0.4.1
@@ -18,6 +17,7 @@ require (
 )
 
 require (
+	github.com/cloudwego/kitex v0.10.3 // indirect
 	github.com/cloudwego/thriftgo v0.3.15 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect

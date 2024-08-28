@@ -2,7 +2,10 @@ package adaptor
 
 import (
 	"context"
+	"github.com/xh-polaris/meowchat-core-api/biz/infrastructure/consts"
 	"net/http"
+	"platform-core-api/biz/infra/util"
+	"platform-core-api/biz/infra/util/log"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol"
@@ -11,10 +14,6 @@ import (
 	"go.opentelemetry.io/contrib/propagators/b3"
 	"go.opentelemetry.io/otel/propagation"
 	"google.golang.org/grpc/status"
-
-	"github.com/xh-polaris/meowchat-core-api/biz/infrastructure/consts"
-	"github.com/xh-polaris/meowchat-core-api/biz/infrastructure/util"
-	"github.com/xh-polaris/meowchat-core-api/biz/infrastructure/util/log"
 )
 
 var _ propagation.TextMapCarrier = &headerProvider{}
