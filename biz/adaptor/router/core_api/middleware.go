@@ -10,10 +10,12 @@ func rootMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
 func _platformMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
 func _reporteventMw() []app.HandlerFunc {
 	// your code...
 	return nil

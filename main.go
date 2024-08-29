@@ -4,10 +4,6 @@ package main
 
 import (
 	"context"
-	"platform-core-api/biz/adaptor"
-	"platform-core-api/biz/adaptor/router/core_api"
-	"platform-core-api/provider"
-
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/middlewares/server/recovery"
 	"github.com/cloudwego/hertz/pkg/app/server"
@@ -19,6 +15,8 @@ import (
 	"go.opentelemetry.io/contrib/propagators/b3"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
+	"platform-core-api/biz/adaptor"
+	"platform-core-api/provider"
 )
 
 func Init() {
@@ -34,7 +32,7 @@ func main() {
 	tracer, cfg := tracing.NewServerTracer()
 	h := server.New(
 		server.WithHostPorts(c.ListenOn),
-		server.WithTracer(prometheus.NewServerTracer(":9091", "/server/metrics")),
+		server.WithTracer(prometheus.NewServerTracer("9091", "/server/metrics")),
 		tracer,
 	)
 	h.Use(tracing.ServerMiddleware(cfg), middleware.EnvironmentMiddleware, recovery.Recovery(), func(ctx context.Context, c *app.RequestContext) {
@@ -42,7 +40,7 @@ func main() {
 		c.Next(ctx)
 	})
 
-	core_api.Register(h)
-	logx.Info("server start")
+	register(h)
+	logx.Info("starting platform-core-api server")
 	h.Spin()
 }

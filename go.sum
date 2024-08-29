@@ -430,6 +430,8 @@ github.com/xh-polaris/meowchat-core-api v1.0.78 h1:OFgEWLo/pvUt7uV7ROdhGQo+9r730
 github.com/xh-polaris/meowchat-core-api v1.0.78/go.mod h1:V/S0ctnMK/rCvKCujXrHWXyYOS3roD6GtakdmYE+Frs=
 github.com/xh-polaris/service-idl-gen-go v0.0.0-20240827135430-e5dde83f5dc0 h1:2mPeE1ml/qlgbfrVXY5rjbEdKu071dMpjeZHfQebA9U=
 github.com/xh-polaris/service-idl-gen-go v0.0.0-20240827135430-e5dde83f5dc0/go.mod h1:8nSGP4Kx51nsIzjDiYMio93AiV+FNPJWz+cD7HdurUI=
+github.com/xh-polaris/service-idl-gen-go v0.0.0-20240829042335-8966903cc864 h1:XO7i2YgMXSUZhsn502IbGYF4bsNXMYpolHXSzZKvEO8=
+github.com/xh-polaris/service-idl-gen-go v0.0.0-20240829042335-8966903cc864/go.mod h1:8nSGP4Kx51nsIzjDiYMio93AiV+FNPJWz+cD7HdurUI=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
