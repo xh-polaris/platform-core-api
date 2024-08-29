@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 	"fmt"
-	"github.com/cloudwego/hertz/pkg/common/json"
+	"github.com/bytedance/sonic"
 	"github.com/google/wire"
 	"github.com/xh-polaris/service-idl-gen-go/kitex_gen/platform/data"
-	"platform-core-api/biz/application/dto/platform/api"
+	api "platform-core-api/biz/application/dto/platform/core_api"
 	"platform-core-api/biz/infra/config"
 	"platform-core-api/biz/infra/rpc/platform_data"
 	"strings"
@@ -32,20 +32,30 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 
 	for _, item := range req.Data {
 		eventName := item.EventName
-		tags := item.Tags
 
-		tagsString, err := json.Marshal(tags)
-		tagsString = []byte(strings.ReplaceAll(string(tagsString), "\"", "'"))
+		var tags map[string]interface{}
 
-		fmt.Println(string(tagsString))
+		err := sonic.UnmarshalString(item.Tags, &tags)
 
 		if err != nil {
 			return false, err
 		}
 
+		// TODO 添加user meta到tags中
+
+		tagsString, err := sonic.MarshalString(tags)
+
+		if err != nil {
+			return false, err
+		}
+
+		tagsString = strings.ReplaceAll(string(tagsString), "\"", "'")
+
+		fmt.Println(tagsString)
+
 		document := data.Document{
 			EventName: eventName,
-			Tags:      string(tagsString),
+			Tags:      tagsString,
 		}
 
 		documents = append(documents, &document)
