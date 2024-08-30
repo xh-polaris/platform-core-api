@@ -49,7 +49,7 @@ func PostProcess(ctx context.Context, c *app.RequestContext, req, resp any, err 
 
 	switch err {
 	case nil:
-		c.JSON(hertz.StatusOK, util.JSONF(resp))
+		c.JSON(hertz.StatusOK, resp)
 	case consts.ErrNotAuthentication:
 		c.JSON(hertz.StatusUnauthorized, err.Error())
 	case consts.ErrForbidden:

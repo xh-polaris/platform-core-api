@@ -13,7 +13,7 @@ import (
 )
 
 type IDataService interface {
-	ReportEvent(ctx context.Context, req *api.ReportEventRequest) (bool, error)
+	ReportEvent(ctx context.Context, req *api.ReportEventRequest) (*api.ReportEventResponse, error)
 }
 
 type DataService struct {
@@ -26,9 +26,13 @@ var DataServiceSet = wire.NewSet(
 	wire.Bind(new(IDataService), new(*DataService)),
 )
 
-func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventRequest) (bool, error) {
+func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventRequest) (*api.ReportEventResponse, error) {
 
 	documents := make([]*data.Document, 0)
+
+	resp := &api.ReportEventResponse{
+		Done: false,
+	}
 
 	for _, item := range req.Data {
 		eventName := item.EventName
@@ -38,7 +42,7 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 		err := sonic.UnmarshalString(item.Tags, &tags)
 
 		if err != nil {
-			return false, err
+			return resp, err
 		}
 		// 添加时间戳
 		tags["@timestamp"] = time.Now().Format(time.RFC3339)
@@ -48,7 +52,7 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 		tagsString, err := sonic.MarshalString(tags)
 
 		if err != nil {
-			return false, err
+			return resp, err
 		}
 
 		fmt.Println(tagsString)
@@ -68,7 +72,10 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 	_, err := s.PlatformData.Insert(ctx, insertReq)
 
 	if err != nil {
-		return false, err
+		return resp, err
 	}
-	return true, nil
+
+	resp.Done = true
+
+	return resp, nil
 }

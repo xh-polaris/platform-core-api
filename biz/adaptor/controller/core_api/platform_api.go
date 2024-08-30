@@ -24,6 +24,6 @@ func ReportEvent(ctx context.Context, c *app.RequestContext) {
 	}
 
 	p := provider.Get()
-	ReportEventResponse, err := p.DataService.ReportEvent(ctx, &req)
-	adaptor.PostProcess(ctx, c, &req, ReportEventResponse, err)
+	resp, err := p.DataService.ReportEvent(ctx, &req)
+	adaptor.PostProcess(ctx, c, &req, resp, err)
 }
