@@ -9,7 +9,7 @@ import (
 	api "platform-core-api/biz/application/dto/platform/core_api"
 	"platform-core-api/biz/infra/config"
 	"platform-core-api/biz/infra/rpc/platform_data"
-	"strings"
+	"time"
 )
 
 type IDataService interface {
@@ -40,6 +40,8 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 		if err != nil {
 			return false, err
 		}
+		// 添加时间戳
+		tags["@timestamp"] = time.Now().Format(time.RFC3339)
 
 		// TODO 添加user meta到tags中
 
@@ -48,8 +50,6 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 		if err != nil {
 			return false, err
 		}
-
-		tagsString = strings.ReplaceAll(string(tagsString), "\"", "'")
 
 		fmt.Println(tagsString)
 
