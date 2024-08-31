@@ -2,8 +2,8 @@ package adaptor
 
 import (
 	"context"
-	"github.com/xh-polaris/meowchat-core-api/biz/infrastructure/consts"
 	"net/http"
+	"platform-core-api/biz/infra/consts"
 	"platform-core-api/biz/infra/util"
 	"platform-core-api/biz/infra/util/log"
 

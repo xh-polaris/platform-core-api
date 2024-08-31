@@ -2,10 +2,10 @@ package service
 
 import (
 	"context"
-	"fmt"
 	"github.com/bytedance/sonic"
 	"github.com/google/wire"
 	"github.com/xh-polaris/service-idl-gen-go/kitex_gen/platform/data"
+	"platform-core-api/biz/adaptor"
 	api "platform-core-api/biz/application/dto/platform/core_api"
 	"platform-core-api/biz/infra/config"
 	"platform-core-api/biz/infra/rpc/platform_data"
@@ -47,15 +47,17 @@ func (s *DataService) ReportEvent(ctx context.Context, req *api.ReportEventReque
 		// 添加时间戳
 		tags["@timestamp"] = time.Now().Format(time.RFC3339)
 
-		// TODO 添加user meta到tags中
+		// 添加user meta到tags中
+		userMeta := adaptor.ExtractUserMeta(ctx)
+		if userMeta.UserId != "" {
+			tags["@user_meta"] = userMeta
+		}
 
 		tagsString, err := sonic.MarshalString(tags)
 
 		if err != nil {
 			return resp, err
 		}
-
-		fmt.Println(tagsString)
 
 		document := data.Document{
 			EventName: eventName,

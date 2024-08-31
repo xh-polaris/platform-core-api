@@ -5,6 +5,7 @@ import (
 	"platform-core-api/biz/application/service"
 	"platform-core-api/biz/infra/config"
 	"platform-core-api/biz/infra/rpc/platform_data"
+	"platform-core-api/biz/infra/rpc/platform_sts"
 )
 
 var provider *Provider
@@ -21,6 +22,7 @@ func Init() {
 type Provider struct {
 	Config      *config.Config
 	DataService service.IDataService
+	AuthService service.IAuthService
 }
 
 func Get() *Provider {
@@ -29,10 +31,12 @@ func Get() *Provider {
 
 var RPCSet = wire.NewSet(
 	platform_data.PlatformDataSet,
+	platform_sts.PlatformStsSet,
 )
 
 var ApplicationSet = wire.NewSet(
 	service.DataServiceSet,
+	service.AuthServiceSet,
 )
 
 var DomainSet = wire.NewSet()
