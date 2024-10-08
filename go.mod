@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/bytedance/gopkg v0.1.1
-	github.com/cloudwego/hertz v0.9.0
+	github.com/cloudwego/hertz v0.9.3
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/google/wire v0.6.0
 	github.com/hertz-contrib/monitor-prometheus v0.1.2
