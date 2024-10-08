@@ -7,9 +7,10 @@
 package provider
 
 import (
-	"platform-core-api/biz/application/service"
-	"platform-core-api/biz/infra/config"
-	"platform-core-api/biz/infra/rpc/platform_data"
+	"github.com/xh-polaris/platform-core-api/biz/application/service"
+	"github.com/xh-polaris/platform-core-api/biz/infra/config"
+	"github.com/xh-polaris/platform-core-api/biz/infra/rpc/platform_data"
+	"github.com/xh-polaris/platform-core-api/biz/infra/rpc/platform_sts"
 )
 
 // Injectors from wire.go:
@@ -27,9 +28,18 @@ func NewProvider() (*Provider, error) {
 		Config:       configConfig,
 		PlatformData: platformData,
 	}
+	stsserviceClient := platform_sts.NewPlatformSts(configConfig)
+	platformSts := &platform_sts.PlatformSts{
+		Client: stsserviceClient,
+	}
+	authService := &service.AuthService{
+		Config: configConfig,
+		Sts:    platformSts,
+	}
 	providerProvider := &Provider{
 		Config:      configConfig,
 		DataService: dataService,
+		AuthService: authService,
 	}
 	return providerProvider, nil
 }

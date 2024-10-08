@@ -4,7 +4,7 @@ package core_api
 
 import (
 	"github.com/cloudwego/hertz/pkg/app/server"
-	core_api "platform-core-api/biz/adaptor/controller/core_api"
+	core_api "github.com/xh-polaris/platform-core-api/biz/adaptor/controller/core_api"
 )
 
 /*
@@ -17,6 +17,12 @@ import (
 func Register(r *server.Hertz) {
 
 	root := r.Group("/", rootMw()...)
+	{
+		_auth := root.Group("/auth", _authMw()...)
+		_auth.POST("/send_verify_code", append(_sendverifycodeMw(), core_api.SendVerifyCode)...)
+		_auth.POST("/set_password", append(_setpasswordMw(), core_api.SetPassword)...)
+		_auth.POST("/sign_in", append(_signinMw(), core_api.SignIn)...)
+	}
 	{
 		_platform := root.Group("/platform", _platformMw()...)
 		_platform.POST("/report_event", append(_reporteventMw(), core_api.ReportEvent)...)

@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 	"github.com/cloudwego/hertz/pkg/common/json"
+	"github.com/xh-polaris/platform-core-api/biz/infra/config"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util/log"
 	"github.com/xh-polaris/service-idl-gen-go/kitex_gen/basic"
-	"platform-core-api/biz/infra/config"
-	"platform-core-api/biz/infra/util"
-	"platform-core-api/biz/infra/util/log"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/golang-jwt/jwt/v4"

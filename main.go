@@ -12,11 +12,12 @@ import (
 	"github.com/hertz-contrib/obs-opentelemetry/tracing"
 	"github.com/xh-polaris/gopkg/hertz/middleware"
 	logx "github.com/xh-polaris/gopkg/util/log"
+	"github.com/xh-polaris/platform-core-api/biz/adaptor"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util/log"
+	"github.com/xh-polaris/platform-core-api/provider"
 	"go.opentelemetry.io/contrib/propagators/b3"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
-	"platform-core-api/biz/adaptor"
-	"platform-core-api/provider"
 )
 
 func Init() {
@@ -32,7 +33,7 @@ func main() {
 	tracer, cfg := tracing.NewServerTracer()
 	h := server.New(
 		server.WithHostPorts(c.ListenOn),
-		server.WithTracer(prometheus.NewServerTracer("9091", "/server/metrics")),
+		server.WithTracer(prometheus.NewServerTracer(":9091", "/server/metrics")),
 		tracer,
 	)
 	h.Use(tracing.ServerMiddleware(cfg), middleware.EnvironmentMiddleware, recovery.Recovery(), func(ctx context.Context, c *app.RequestContext) {
@@ -41,6 +42,6 @@ func main() {
 	})
 
 	register(h)
-	logx.Info("starting platform-core-api server")
+	log.Info("Server start")
 	h.Spin()
 }

@@ -20,3 +20,23 @@ func _reporteventMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _authMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _sendverifycodeMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _setpasswordMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _signinMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
