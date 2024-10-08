@@ -4,7 +4,7 @@ package core_api
 
 import (
 	"github.com/cloudwego/hertz/pkg/app/server"
-	core_api "platform-core-api/biz/adaptor/controller/core_api"
+	core_api "github.com/xh-polaris/platform-core-api/biz/adaptor/controller/core_api"
 )
 
 /*
