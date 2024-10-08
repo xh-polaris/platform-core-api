@@ -2,10 +2,10 @@ package adaptor
 
 import (
 	"context"
+	"github.com/xh-polaris/platform-core-api/biz/infra/consts"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util/log"
 	"net/http"
-	"platform-core-api/biz/infra/consts"
-	"platform-core-api/biz/infra/util"
-	"platform-core-api/biz/infra/util/log"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol"
@@ -52,9 +52,6 @@ func PostProcess(ctx context.Context, c *app.RequestContext, req, resp any, err 
 		c.JSON(hertz.StatusOK, resp)
 	case consts.ErrNotAuthentication:
 		c.JSON(hertz.StatusUnauthorized, err.Error())
-	case consts.ErrForbidden:
-		c.JSON(hertz.StatusForbidden, err.Error())
-	default:
 		if s, ok := status.FromError(err); ok {
 			c.JSON(http.StatusBadRequest, &bizerrors.BizError{
 				Code: uint32(s.Code()),

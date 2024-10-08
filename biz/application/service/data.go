@@ -4,11 +4,11 @@ import (
 	"context"
 	"github.com/bytedance/sonic"
 	"github.com/google/wire"
+	"github.com/xh-polaris/platform-core-api/biz/adaptor"
+	api "github.com/xh-polaris/platform-core-api/biz/application/dto/platform/core_api"
+	"github.com/xh-polaris/platform-core-api/biz/infra/config"
+	"github.com/xh-polaris/platform-core-api/biz/infra/rpc/platform_data"
 	"github.com/xh-polaris/service-idl-gen-go/kitex_gen/platform/data"
-	"platform-core-api/biz/adaptor"
-	api "platform-core-api/biz/application/dto/platform/core_api"
-	"platform-core-api/biz/infra/config"
-	"platform-core-api/biz/infra/rpc/platform_data"
 	"time"
 )
 

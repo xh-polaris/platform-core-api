@@ -1,4 +1,4 @@
-module platform-core-api
+module github.com/xh-polaris/platform-core-api
 
 go 1.21
 

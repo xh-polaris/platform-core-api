@@ -3,8 +3,8 @@ package platform_data
 import (
 	"github.com/google/wire"
 	"github.com/xh-polaris/gopkg/kitex/client"
+	"github.com/xh-polaris/platform-core-api/biz/infra/config"
 	data "github.com/xh-polaris/service-idl-gen-go/kitex_gen/platform/data/dataservice"
-	"platform-core-api/biz/infra/config"
 )
 
 type IPlatformData interface {

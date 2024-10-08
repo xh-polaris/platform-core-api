@@ -4,12 +4,12 @@ package core_api
 
 import (
 	"context"
-	"platform-core-api/biz/adaptor"
-	"platform-core-api/provider"
+	"github.com/xh-polaris/platform-core-api/biz/adaptor"
+	"github.com/xh-polaris/platform-core-api/provider"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	core_api "platform-core-api/biz/application/dto/platform/core_api"
+	core_api "github.com/xh-polaris/platform-core-api/biz/application/dto/platform/core_api"
 )
 
 // ReportEvent .

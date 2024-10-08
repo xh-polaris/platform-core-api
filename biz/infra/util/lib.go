@@ -1,7 +1,7 @@
 package util
 
 import (
-	"platform-core-api/biz/infra/util/log"
+	"github.com/xh-polaris/platform-core-api/biz/infra/util/log"
 	"strconv"
 	"sync"
 

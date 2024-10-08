@@ -2,10 +2,10 @@ package provider
 
 import (
 	"github.com/google/wire"
-	"platform-core-api/biz/application/service"
-	"platform-core-api/biz/infra/config"
-	"platform-core-api/biz/infra/rpc/platform_data"
-	"platform-core-api/biz/infra/rpc/platform_sts"
+	"github.com/xh-polaris/platform-core-api/biz/application/service"
+	"github.com/xh-polaris/platform-core-api/biz/infra/config"
+	"github.com/xh-polaris/platform-core-api/biz/infra/rpc/platform_data"
+	"github.com/xh-polaris/platform-core-api/biz/infra/rpc/platform_sts"
 )
 
 var provider *Provider
