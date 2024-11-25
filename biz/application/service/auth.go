@@ -112,6 +112,6 @@ func (s *AuthService) SendVerifyCode(ctx context.Context, req *core_api.SendVeri
 
 	return &core_api.SendVerifyCodeResp{
 		Code: 0,
-		Msg:  "验证发送成功",
+		Msg:  "验证码发送成功",
 	}, nil
 }
