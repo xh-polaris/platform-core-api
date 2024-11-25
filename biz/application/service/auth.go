@@ -99,14 +99,19 @@ func (s *AuthService) SetPassword(ctx context.Context, req *core_api.SetPassword
 }
 
 func (s *AuthService) SendVerifyCode(ctx context.Context, req *core_api.SendVerifyCodeReq) (*core_api.SendVerifyCodeResp, error) {
-	resp := new(core_api.SendVerifyCodeResp)
 	_, err := s.Sts.SendVerifyCode(ctx, &sts.SendVerifyCodeReq{
 		AuthType: req.AuthType,
 		AuthId:   req.AuthId,
 	})
 	if err != nil {
-		return nil, err
+		return &core_api.SendVerifyCodeResp{
+			Code: 1005,
+			Msg:  "验证码发送失败，请重试",
+		}, nil
 	}
 
-	return resp, nil
+	return &core_api.SendVerifyCodeResp{
+		Code: 0,
+		Msg:  "验证发送成功",
+	}, nil
 }
