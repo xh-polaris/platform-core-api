@@ -77,7 +77,7 @@ require (
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/xh-polaris/service-idl-gen-go v0.0.0-20241008070604-1ac5105f5c13
+	github.com/xh-polaris/service-idl-gen-go v0.0.0-20250108075223-4036ab37c8b4
 	go.opentelemetry.io/otel/exporters/jaeger v1.17.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.24.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.24.0 // indirect
