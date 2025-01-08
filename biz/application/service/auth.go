@@ -51,6 +51,9 @@ func (s *AuthService) SignIn(ctx context.Context, req *core_api.SignInReq) (*cor
 		return nil, err
 	}
 	resp.UserId = rpcResp.GetUserId()
+	if rpcResp.Options != nil {
+		resp.Option = rpcResp.Options
+	}
 	return resp, nil
 }
 
