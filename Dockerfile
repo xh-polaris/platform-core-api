@@ -3,7 +3,6 @@ FROM golang:1.21-alpine AS builder
 LABEL stage=gobuilder
 
 ENV CGO_ENABLED 0
-ENV GOPROXY https://proxy.golang.org,direct
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update --no-cache && apk add --no-cache tzdata
